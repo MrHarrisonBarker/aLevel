@@ -1,4 +1,4 @@
 language: csharp
 solution: aLevel/aLevel.sln
 script:
- - dotnet run
+ - dotnet restore
