@@ -57,7 +57,7 @@ namespace aLevel.Controllers
                 (from search in ctx.Search
                  where search.Type == SearchType.Search &&
                        search.Query == "Donald trump" &&
-                       search.Count == 100
+                       search.Count == 200
                  select search)
                 .SingleOrDefaultAsync();
 
@@ -65,10 +65,10 @@ namespace aLevel.Controllers
                 (from tweet in searchResponse.Statuses
                  select new TweetSearchModel
                  {
-                     ID = tweet.UserID,
+                     ID = tweet.StatusID,
                      ImageUrl = tweet.User.ProfileImageUrl,
                      ScreenName = tweet.User.Name,
-                     Text = tweet.Text
+                     Text = tweet.Text,
                  })
                  .ToList();
 
