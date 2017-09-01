@@ -1,4 +1,2 @@
 language: csharp
 solution: aLevel/aLevel.sln
-script:
-  - xbuild /p:Configuration=Release aLevel/aLevel.sln
