@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using LinqToTwitter;
 
 namespace aLevel.Controllers
 {
@@ -10,6 +7,9 @@ namespace aLevel.Controllers
     {
         public ActionResult Index()
         {
+            if (!new SessionStateCredentialStore().HasAllCredentials())
+                return RedirectToAction("Index", "OAuth");
+
             return View();
         }
 
@@ -23,6 +23,13 @@ namespace aLevel.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult Status()
+        {
+            ViewBag.Message = "Your Status page.";
 
             return View();
         }
