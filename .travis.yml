@@ -1,5 +1,4 @@
 language: csharp
-solution: aLevel/aLevel.sln
 install:
   - nuget restore aLevel/aLevel.sln
 script:
