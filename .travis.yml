@@ -1,2 +1,6 @@
 language: csharp
 solution: aLevel/aLevel.sln
+install:
+  - nuget restore aLevel/aLevel.sln
+script:
+- xbuild /p:Configuration=Release aLevel/aLevel.sln
