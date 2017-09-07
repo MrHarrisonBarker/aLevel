@@ -42,8 +42,17 @@ namespace aLevel.Controllers
             return View(tweets);
         }
 
-        [ActionName("Search")]
-        public async Task<ActionResult> SearchAsync()
+
+
+//		[HttpGet]
+	    public async Task<ActionResult> Search()
+	    {
+		    return View();
+	    }
+
+
+//		[HttpPost]
+        public async Task<ActionResult> DoSearch( string query )
         {
             var auth = new MvcAuthorizer
             {
@@ -56,7 +65,7 @@ namespace aLevel.Controllers
                 await
                 (from search in ctx.Search
                  where search.Type == SearchType.Search &&
-                       search.Query == "Donald trump" &&
+                       search.Query == query &&
                        search.Count == 200
                  select search)
                 .SingleOrDefaultAsync();
@@ -72,7 +81,7 @@ namespace aLevel.Controllers
                  })
                  .ToList();
 
-            return View(tweets);
+	        return View( tweets );
         }
 
     }
