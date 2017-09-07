@@ -52,7 +52,7 @@ namespace aLevel.Controllers
 
 
 //		[HttpPost]
-        public async Task<ActionResult> DoSearch( string query )
+        public async Task<ActionResult> DoSearch( string query, int count, ResultType type )
         {
             var auth = new MvcAuthorizer
             {
@@ -61,12 +61,14 @@ namespace aLevel.Controllers
 
             var ctx = new TwitterContext(auth);
 
-            var searchResponse =
+
+	  var searchResponse =
                 await
                 (from search in ctx.Search
                  where search.Type == SearchType.Search &&
                        search.Query == query &&
-                       search.Count == 200
+                       search.Count == count &&
+					   search.ResultType == type
                  select search)
                 .SingleOrDefaultAsync();
 
