@@ -1,3 +1,5 @@
 language: csharp
 solution: aLevel/aLevel.sln
-script: mono aLevel/packages/NUnit.ConsoleRunner.3.7.0/tools/nunit3-console.exe  aLevel/aLevelTesting/bin/Release/aLevelTesting.dll
+script:
+  - xbuild /p:Configuration=Release aLevel/aLevel.sln
+  - mono aLevel/packages/NUnit.ConsoleRunner.3.7.0/tools/nunit3-console.exe  aLevel/aLevelTesting/bin/Release/aLevelTesting.dll
