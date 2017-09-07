@@ -12,7 +12,7 @@ namespace aLevel.Controllers
         // GET: OAuth
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
         public async Task<ActionResult> BeginAsync()
         {

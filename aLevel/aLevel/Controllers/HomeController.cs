@@ -10,14 +10,14 @@ namespace aLevel.Controllers
             if (!new SessionStateCredentialStore().HasAllCredentials())
                 return RedirectToAction("Index", "OAuth");
 
-            return View();
+            return View("Index");
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
             
-            return View();
+            return View("About");
         }
 
         public ActionResult Contact()
