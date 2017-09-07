@@ -4,18 +4,18 @@ using aLevel.Controllers;
 
 using FluentAssertions;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 using Moq;
+
+using NUnit.Framework;
 
 
 
 namespace aLevelTesting
 {
-	[ TestClass ]
+	[ TestFixture ]
 	public class When_going_to_the_index_page
 	{
-		[ TestMethod ]
+		[ Test ]
 		public void Should_use_the_index_view_if_authenticated()
 		{
 			var credentialCheckerMock = new Mock<ICredentialChecker>();
@@ -30,7 +30,7 @@ namespace aLevelTesting
 
 
 
-		[ TestMethod ]
+		[ Test ]
 		public void Should_redirect_to_oath_if_not_authenticated()
 		{
 			var credentialCheckerMock = new Mock<ICredentialChecker>();
