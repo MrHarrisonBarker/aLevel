@@ -7,7 +7,7 @@
 ## Features to impliment
 
 - [x] Basic Twitter querying.
-- [ ] User input for Twitter queries.
+- [x] User input for Twitter queries.
 - [ ] Sentiment analysis of mass tweets.
 - [ ] Data visualisation of analysed tweets.
 - [ ] Stored credentials in db.
