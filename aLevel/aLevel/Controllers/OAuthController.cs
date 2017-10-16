@@ -54,7 +54,7 @@ namespace aLevel.Controllers
             ulong userID = credentials.UserID;
             //
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Search", "Queries");
         }
         
     }
