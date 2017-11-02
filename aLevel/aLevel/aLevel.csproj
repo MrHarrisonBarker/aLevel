@@ -48,6 +48,11 @@
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\IKVM.OpenJDK.Core.7.2.4630.5\lib\IKVM.OpenJDK.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="LinqToTwitter.AspNet, Version=3.2.0.30483, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\linqtotwitter.4.1.0\lib\net45\LinqToTwitter.AspNet.dll</HintPath>
     </Reference>
@@ -175,8 +180,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\SentimentViewModel.cs" />
     <Compile Include="Models\TweetSearchModel.cs" />
-    <Compile Include="Models\TweetViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +206,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="nlp-models\pos\english-left3words-distsim.tagger.props" />
     <Content Include="nlp-models\pos\english-left3words-distsim.tagger" />
+    <Content Include="nlp-models\sentiment\sentiment.ser.gz" />
+    <Content Include="nlp-models\lexparser\englishPCFG.ser.gz" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
@@ -274,7 +281,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\OAuth\Index.cshtml" />
     <Content Include="Views\Queries\Index.cshtml" />
-    <Content Include="Views\Queries\HomeTimeline.cshtml" />
     <Content Include="Views\Queries\DoSearch.cshtml" />
     <Content Include="Views\Queries\Search.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
@@ -318,9 +324,13 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\SimpleNetNlp.3.7.0.1\build\SimpleNetNlp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SimpleNetNlp.3.7.0.1\build\SimpleNetNlp.targets'))" />
     <Error Condition="!Exists('..\packages\SimpleNetNlp.Models.PosTagger.3.7.0.1\build\SimpleNetNlp.Models.PosTagger.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SimpleNetNlp.Models.PosTagger.3.7.0.1\build\SimpleNetNlp.Models.PosTagger.targets'))" />
+    <Error Condition="!Exists('..\packages\SimpleNetNlp.Models.Sentiment.3.7.0.1\build\SimpleNetNlp.Models.Sentiment.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SimpleNetNlp.Models.Sentiment.3.7.0.1\build\SimpleNetNlp.Models.Sentiment.targets'))" />
+    <Error Condition="!Exists('..\packages\SimpleNetNlp.Models.LexParser.3.7.0.1\build\SimpleNetNlp.Models.LexParser.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SimpleNetNlp.Models.LexParser.3.7.0.1\build\SimpleNetNlp.Models.LexParser.targets'))" />
   </Target>
   <Import Project="..\packages\SimpleNetNlp.3.7.0.1\build\SimpleNetNlp.targets" Condition="Exists('..\packages\SimpleNetNlp.3.7.0.1\build\SimpleNetNlp.targets')" />
   <Import Project="..\packages\SimpleNetNlp.Models.PosTagger.3.7.0.1\build\SimpleNetNlp.Models.PosTagger.targets" Condition="Exists('..\packages\SimpleNetNlp.Models.PosTagger.3.7.0.1\build\SimpleNetNlp.Models.PosTagger.targets')" />
+  <Import Project="..\packages\SimpleNetNlp.Models.Sentiment.3.7.0.1\build\SimpleNetNlp.Models.Sentiment.targets" Condition="Exists('..\packages\SimpleNetNlp.Models.Sentiment.3.7.0.1\build\SimpleNetNlp.Models.Sentiment.targets')" />
+  <Import Project="..\packages\SimpleNetNlp.Models.LexParser.3.7.0.1\build\SimpleNetNlp.Models.LexParser.targets" Condition="Exists('..\packages\SimpleNetNlp.Models.LexParser.3.7.0.1\build\SimpleNetNlp.Models.LexParser.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

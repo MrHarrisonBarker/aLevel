@@ -1,12 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 namespace aLevel.Models
 {
-    public class TweetViewModel
+    public class SentimentViewModel
     {
+        [DisplayName("Tweet ID")]
+        public ulong ID { get; set; }
+
         [DisplayName("Image")]
         [DataType(DataType.ImageUrl)]
         public string ImageUrl { get; set; }
@@ -16,5 +18,13 @@ namespace aLevel.Models
 
         [DisplayName("Tweet")]
         public string Text { get; set; }
+
+        [DisplayName("Tweet sentiment")]
+        public string SentimentText { get; set; }
+
+        internal object ToListAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

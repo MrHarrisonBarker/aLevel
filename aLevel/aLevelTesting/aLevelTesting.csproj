@@ -106,7 +106,6 @@
     <Compile Include="When_using_nlp_for_sentiment_analysis.cs" />
     <Compile Include="When_going_to_the_index_page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="When_using_VADER_for_sentiment_analysis.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
