@@ -2,5 +2,40 @@
     ViewBag.Title = "Authorizing Application";
 }
 
-<h2>Authorize with OAuth</h2>
-@Html.ActionLink("Begin the Authorization Process", "Begin")
+<style>
+    a 
+    {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    a:hover 
+    {
+        text-decoration:none; 
+        cursor:pointer;  
+    }  
+    a:active
+    {
+        text-decoration: none;
+    }
+{}
+</style>
+
+
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <h2 class="text-center">Authorize with OAuth</h2>
+        <button class="btn btn-default btn-lg" type="submit" style="width: 100%;">
+            @Html.ActionLink("Begin the Authorization Process", "Begin")
+        </button>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        
+    </div>
+</div> 
+
+
+

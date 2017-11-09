@@ -22,8 +22,10 @@ namespace aLevel.Controllers
 
 
 	    public ActionResult Index()
-        {
-	        if( !credentialChecker.HasCredentials() )
+	    {
+	        bool currentlyTesting = true;
+
+            if ( !credentialChecker.HasCredentials() && currentlyTesting == false)
 	        {
 		        return RedirectToAction("Index", "OAuth");
 	        }

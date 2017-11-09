@@ -17,24 +17,17 @@ namespace aLevel.Controllers
 {
 	public class QueriesController : Controller
 	{
-		// GET: Queries
-		public ActionResult Index()
-		{
-			return View();
-		}
+
+        //		[HttpGet]
+        public ActionResult Search()    
+        {
+            return View();
+        }
 
 
 
-//		[HttpGet]
-		public async Task<ActionResult> Search()
-		{
-			return View();
-		}
-
-
-
-//		[HttpPost]
-		public async Task<ActionResult> DoSearch( string query, int count, ResultType type )
+        //		[HttpPost]
+        public async Task<ActionResult> DoSearch( string query, int count, ResultType type )
 		{
 			var tweets =
 				await
@@ -42,7 +35,7 @@ namespace aLevel.Controllers
 
 			var sentimentTweets = DoSentiment( tweets );
 
-			return View( sentimentTweets );
+			return View( "Results", sentimentTweets );
 		}
 
 
