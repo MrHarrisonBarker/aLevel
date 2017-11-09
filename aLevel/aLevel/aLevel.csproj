@@ -99,8 +99,8 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="SimpleNetNlp, Version=3.7.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleNetNlp.3.7.0.1\lib\SimpleNetNlp.dll</HintPath>
+    <Reference Include="SimpleNetNlp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleNetNlp.3.7.0\lib\SimpleNetNlp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -189,6 +189,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\tablesorter\theme.default.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -212,6 +213,8 @@
     <Content Include="edu\stanford\nlp\models\pos\english-left3words-distsim.tagger" />
     <Content Include="edu\stanford\nlp\models\pos\english-left3words-distsim.tagger.props" />
     <Content Include="edu\stanford\nlp\models\sentiment\sentiment.ser.gz" />
+    <Content Include=".bin\node.cmd" />
+    <Content Include=".bin\git.cmd" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
@@ -269,6 +272,8 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\tablesorter\jquery.tablesorter.combined.js" />
+    <Content Include="Scripts\tablesorter\jquery.tablesorter.combined.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -326,15 +331,15 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\packages\SimpleNetNlp.3.7.0.1\build\SimpleNetNlp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SimpleNetNlp.3.7.0.1\build\SimpleNetNlp.targets'))" />
-    <Error Condition="!Exists('..\packages\SimpleNetNlp.Models.PosTagger.3.7.0.1\build\SimpleNetNlp.Models.PosTagger.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SimpleNetNlp.Models.PosTagger.3.7.0.1\build\SimpleNetNlp.Models.PosTagger.targets'))" />
-    <Error Condition="!Exists('..\packages\SimpleNetNlp.Models.Sentiment.3.7.0.1\build\SimpleNetNlp.Models.Sentiment.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SimpleNetNlp.Models.Sentiment.3.7.0.1\build\SimpleNetNlp.Models.Sentiment.targets'))" />
-    <Error Condition="!Exists('..\packages\SimpleNetNlp.Models.LexParser.3.7.0.1\build\SimpleNetNlp.Models.LexParser.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SimpleNetNlp.Models.LexParser.3.7.0.1\build\SimpleNetNlp.Models.LexParser.targets'))" />
+    <Error Condition="!Exists('..\packages\SimpleNetNlp.3.7.0\build\SimpleNetNlp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SimpleNetNlp.3.7.0\build\SimpleNetNlp.targets'))" />
+    <Error Condition="!Exists('..\packages\SimpleNetNlp.Models.LexParser.3.7.0\build\SimpleNetNlp.Models.LexParser.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SimpleNetNlp.Models.LexParser.3.7.0\build\SimpleNetNlp.Models.LexParser.targets'))" />
+    <Error Condition="!Exists('..\packages\SimpleNetNlp.Models.PosTagger.3.7.0\build\SimpleNetNlp.Models.PosTagger.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SimpleNetNlp.Models.PosTagger.3.7.0\build\SimpleNetNlp.Models.PosTagger.targets'))" />
+    <Error Condition="!Exists('..\packages\SimpleNetNlp.Models.Sentiment.3.7.0\build\SimpleNetNlp.Models.Sentiment.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SimpleNetNlp.Models.Sentiment.3.7.0\build\SimpleNetNlp.Models.Sentiment.targets'))" />
   </Target>
-  <Import Project="..\packages\SimpleNetNlp.3.7.0.1\build\SimpleNetNlp.targets" Condition="Exists('..\packages\SimpleNetNlp.3.7.0.1\build\SimpleNetNlp.targets')" />
-  <Import Project="..\packages\SimpleNetNlp.Models.PosTagger.3.7.0.1\build\SimpleNetNlp.Models.PosTagger.targets" Condition="Exists('..\packages\SimpleNetNlp.Models.PosTagger.3.7.0.1\build\SimpleNetNlp.Models.PosTagger.targets')" />
-  <Import Project="..\packages\SimpleNetNlp.Models.Sentiment.3.7.0.1\build\SimpleNetNlp.Models.Sentiment.targets" Condition="Exists('..\packages\SimpleNetNlp.Models.Sentiment.3.7.0.1\build\SimpleNetNlp.Models.Sentiment.targets')" />
-  <Import Project="..\packages\SimpleNetNlp.Models.LexParser.3.7.0.1\build\SimpleNetNlp.Models.LexParser.targets" Condition="Exists('..\packages\SimpleNetNlp.Models.LexParser.3.7.0.1\build\SimpleNetNlp.Models.LexParser.targets')" />
+  <Import Project="..\packages\SimpleNetNlp.3.7.0\build\SimpleNetNlp.targets" Condition="Exists('..\packages\SimpleNetNlp.3.7.0\build\SimpleNetNlp.targets')" />
+  <Import Project="..\packages\SimpleNetNlp.Models.LexParser.3.7.0\build\SimpleNetNlp.Models.LexParser.targets" Condition="Exists('..\packages\SimpleNetNlp.Models.LexParser.3.7.0\build\SimpleNetNlp.Models.LexParser.targets')" />
+  <Import Project="..\packages\SimpleNetNlp.Models.PosTagger.3.7.0\build\SimpleNetNlp.Models.PosTagger.targets" Condition="Exists('..\packages\SimpleNetNlp.Models.PosTagger.3.7.0\build\SimpleNetNlp.Models.PosTagger.targets')" />
+  <Import Project="..\packages\SimpleNetNlp.Models.Sentiment.3.7.0\build\SimpleNetNlp.Models.Sentiment.targets" Condition="Exists('..\packages\SimpleNetNlp.Models.Sentiment.3.7.0\build\SimpleNetNlp.Models.Sentiment.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
