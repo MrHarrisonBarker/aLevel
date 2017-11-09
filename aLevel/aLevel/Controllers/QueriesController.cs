@@ -93,7 +93,7 @@ namespace aLevel.Controllers
                         
                     })
                 .ToList();
-            
+
             return (sentimentTweets);
         }
 

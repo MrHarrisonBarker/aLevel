@@ -208,6 +208,10 @@
     <Content Include="nlp-models\pos\english-left3words-distsim.tagger" />
     <Content Include="nlp-models\sentiment\sentiment.ser.gz" />
     <Content Include="nlp-models\lexparser\englishPCFG.ser.gz" />
+    <Content Include="edu\stanford\nlp\models\lexparser\englishPCFG.ser.gz" />
+    <Content Include="edu\stanford\nlp\models\pos\english-left3words-distsim.tagger" />
+    <Content Include="edu\stanford\nlp\models\pos\english-left3words-distsim.tagger.props" />
+    <Content Include="edu\stanford\nlp\models\sentiment\sentiment.ser.gz" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
