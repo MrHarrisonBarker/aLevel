@@ -15,16 +15,24 @@
         height = 500,
         radius = Math.min(width, height) / 2 - 10;
 
-    var data = d3.range(10).map(Math.random).sort(d3.descending);
+    var data = [{ "name": "one", "value": 20 },
+                { "name": "two", "value": 40 },
+                { "name": "three", "value": 50 },
+                { "name": "four", "value": 60 },
+                { "name": "five", "value": 70 }];
 
-    var color = d3.scale.category20();
+    var color = d3.scale.ordinal()
+        .domain(["one", "two", "three", "four", "five"])
+        .range(["#ff0000", "#ee0000", "#dd0000", "#cc0000", "#bb0000"]);
 
     var arc = d3.svg.arc()
         .outerRadius(radius);
 
-    var pie = d3.layout.pie();
+    var pie = d3.layout.pie()
+        .value(function (d) { return d.value; });
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select("body")
+        .append("svg")
         .datum(data)
         .attr("width", width)
         .attr("height", height)
@@ -34,7 +42,7 @@
     var arcs = svg.selectAll("g.arc")
         .data(pie)
         .enter().append("g")
-        .attr("class", "arc");
+        .attr("class", "arc")
 
     arcs.append("path")
         .attr("fill", function(d, i) { return color(i); })
@@ -47,6 +55,16 @@
         .delay(function(d, i) { return 2000 + i * 50; })
         .duration(750)
         .attrTween("d", tweenDonut);
+
+
+    arcs.append("text")
+        .attr("transform", function (d) {
+            d.innerRadius = 0;
+            d.outerRadius = radius;
+            return "translate(" + arc.centroid(d) + ")";
+        })
+        .attr("text-anchor", "middle")
+        .text(function (d, i) { return data[i].name; });
 
     function tweenPie(b) {
         b.innerRadius = 0;
@@ -61,3 +79,4 @@
     }
 
 </script>
+</body>

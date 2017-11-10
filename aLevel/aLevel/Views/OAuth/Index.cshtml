@@ -18,7 +18,6 @@
     {
         text-decoration: none;
     }
-{}
 </style>
 
 
@@ -27,6 +26,7 @@
         
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <img src="~/img/Logo.png" class="img-responsive" style="align-content: center">
         <h2 class="text-center">Authorize with OAuth</h2>
         <button class="btn btn-default btn-lg" type="submit" style="width: 100%;">
             @Html.ActionLink("Begin the Authorization Process", "Begin")
@@ -35,6 +35,8 @@
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
         
     </div>
+    
+    @Html.ActionLink("Begin the Authorization Process", "Begin")
 </div> 
 
 
