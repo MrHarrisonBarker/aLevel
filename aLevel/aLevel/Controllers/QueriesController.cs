@@ -89,6 +89,9 @@ namespace aLevel.Controllers
 					                      ImageUrl = tweet.User.ProfileImageUrl,
 					                      ScreenName = tweet.User.Name,
 					                      Text = tweet.Text,
+				                          CreatedAt = tweet.CreatedAt,
+				                          IsVerified = tweet.User.Verified,
+				                          RetweetCount = tweet.RetweetCount
 				                      } );
 			}
 
@@ -110,7 +113,10 @@ namespace aLevel.Controllers
 					  ImageUrl = tweet.ImageUrl,
 					  ScreenName = tweet.ScreenName,
 					  Text = tweet.Text,
-					  SentimentText = new Sentence( tweet.Text ).Sentiment.ToString()
+				      CreatedAt = tweet.CreatedAt,
+				      IsVerified = tweet.IsVerified,
+				      RetweetCount = tweet.RetweetCount,
+                      SentimentText = new Sentence( tweet.Text ).Sentiment.ToString()
 				  } )
 				.ToList();
 

@@ -16,6 +16,15 @@ namespace aLevel.Models
         [DisplayName("Tweet")]
         public string Text { get; set; }
 
+        [DisplayName("Created at")]
+        public DateTime CreatedAt { get; set; }
+
+        [DisplayName("Verified")]
+        public bool IsVerified { get; set; }
+
+        [DisplayName("Retweet Count")]
+        public int RetweetCount { get; set; }
+
         [DisplayName("Tweet sentiment")]
         public string SentimentText { get; set; }
 

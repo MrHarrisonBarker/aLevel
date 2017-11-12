@@ -205,6 +205,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="img\1307051244_737.png" />
     <Content Include="img\Logo.png" />
     <Content Include="nlp-models\pos\english-left3words-distsim.tagger.props" />
     <Content Include="nlp-models\pos\english-left3words-distsim.tagger" />
