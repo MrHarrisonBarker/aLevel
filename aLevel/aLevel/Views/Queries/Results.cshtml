@@ -9,7 +9,7 @@
 <script src="//d3js.org/d3.v4.min.js"></script>
 <script>
 
-    var data = [0,0,0,0];
+    var data = [0,0,0,0,0];
 
     @foreach (var item in Model)
     {
@@ -127,13 +127,10 @@
                 @Html.DisplayFor(modelItem => item.CreatedAt)
             </td>
             <td>
+                <span style="display: none">@item.IsVerified</span>
                 @if (item.IsVerified == true)
                 {
                     <img src="~/img/1307051244_737.png" alt="@item.IsVerified" />
-                }
-                else
-                {
-
                 }
             </td>
             <td>

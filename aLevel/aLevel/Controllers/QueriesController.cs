@@ -51,16 +51,11 @@ namespace aLevel.Controllers
 
 			var listOfTweets = new List<TweetSearchModel>();
 
-			while( listOfTweets.Count < count )
+			ulong maxId = 0;
+
+			while ( listOfTweets.Count < count )
 			{
-				ulong maxId = 0;
-
-				if( listOfTweets.Count > 0 )
-				{
-					maxId = listOfTweets[ listOfTweets.Count - 1 ].ID;
-				}
-
-				var numberToRequest = ( count - listOfTweets.Count );
+				var numberToRequest = Math.Max( count, 100 );
 
 				var searchResponse =
 					await
@@ -74,6 +69,9 @@ namespace aLevel.Controllers
 						.SingleOrDefaultAsync();
 
 
+				maxId = searchResponse.Statuses.Last().StatusID;
+
+
 				if( searchResponse.Count < 1 )
 				{
 					break;
@@ -85,7 +83,7 @@ namespace aLevel.Controllers
 				                      where tweet.RetweetedStatus.RetweetCount < 1
 				                      select new TweetSearchModel
 				                      {
-					                      ID = tweet.ID,
+					                      ID = tweet.StatusID,
 					                      ImageUrl = tweet.User.ProfileImageUrl,
 					                      ScreenName = tweet.User.Name,
 					                      Text = tweet.Text,
@@ -96,7 +94,7 @@ namespace aLevel.Controllers
 			}
 
 
-			return listOfTweets;
+			return listOfTweets.Take( count ).ToList();
 		}
 
 
