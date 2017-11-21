@@ -6,6 +6,9 @@ namespace aLevel.Models
 {
     public class SentimentViewModel
     {
+        [DisplayName("Tweet ID")]
+        public ulong ID { get; set; }
+
         [DisplayName("Image")]
         [DataType(DataType.ImageUrl)]
         public string ImageUrl { get; set; }

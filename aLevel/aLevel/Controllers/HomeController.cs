@@ -8,10 +8,9 @@ namespace aLevel.Controllers
 	{
 		private readonly ICredentialChecker credentialChecker;
 
-
-
 		public HomeController( ) : this( null )
 		{
+		    
 		}
 
 		public HomeController(ICredentialChecker credentialChecker)

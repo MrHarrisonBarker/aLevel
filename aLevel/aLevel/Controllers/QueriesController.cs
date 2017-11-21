@@ -21,10 +21,8 @@ namespace aLevel.Controllers
         //		[HttpGet]
         public ActionResult Search()    
         {
-            return View();
+            return View( "Search" );
         }
-
-
 
         //		[HttpPost]
         public async Task<ActionResult> DoSearch( string query, int count, ResultType type )
@@ -42,7 +40,8 @@ namespace aLevel.Controllers
 
 		public async Task<List<TweetSearchModel>> GetTweets( string query, int count, ResultType type )
 		{
-			var auth = new MvcAuthorizer
+
+		    var auth = new MvcAuthorizer
 			{
 				CredentialStore = new SessionStateCredentialStore()
 			};
@@ -108,6 +107,7 @@ namespace aLevel.Controllers
 				( from tweet in tweets
 				  select new SentimentViewModel()
 				  {
+				      ID = tweet.ID,
 					  ImageUrl = tweet.ImageUrl,
 					  ScreenName = tweet.ScreenName,
 					  Text = tweet.Text,

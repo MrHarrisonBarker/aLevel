@@ -14,6 +14,7 @@ namespace aLevel.Controllers
         {
             return View("Index");
         }
+        
         public async Task<ActionResult> BeginAsync()
         {
             //var auth = new MvcSignInAuthorizer
@@ -26,8 +27,10 @@ namespace aLevel.Controllers
                 }
             };
             string twitterCallbackUrl = Request.Url.ToString().Replace("Begin", "Complete");
-            return await auth.BeginAuthorizationAsync(new Uri(twitterCallbackUrl));
+            return 
+                await auth.BeginAuthorizationAsync(new Uri(twitterCallbackUrl));
         }
+        
         public async Task<ActionResult> CompleteAsync()
         {
             var auth = new MvcAuthorizer
