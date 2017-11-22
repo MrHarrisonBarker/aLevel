@@ -68,7 +68,7 @@ namespace aLevel.Controllers
 						.SingleOrDefaultAsync();
 
 
-				maxId = searchResponse.Statuses.Last().StatusID;
+				maxId = searchResponse.Statuses.Last().StatusID - 1;
 
 
 				if( searchResponse.Count < 1 )
@@ -88,7 +88,11 @@ namespace aLevel.Controllers
 					                      Text = tweet.Text,
 				                          CreatedAt = tweet.CreatedAt,
 				                          IsVerified = tweet.User.Verified,
-				                          RetweetCount = tweet.RetweetCount
+				                          RetweetCount = tweet.RetweetCount,
+                                          FavoriteCount = tweet.FavoriteCount,
+                                          FollowerCount = tweet.User.FollowersCount,
+                                          StatusesCount = tweet.User.StatusesCount,
+                                          Lang = tweet.Lang
 				                      } );
 			}
 
@@ -106,7 +110,7 @@ namespace aLevel.Controllers
 			var sentimentTweets =
 				( from tweet in tweets
 				  select new SentimentViewModel()
-				  {
+				  { 
 				      ID = tweet.ID,
 					  ImageUrl = tweet.ImageUrl,
 					  ScreenName = tweet.ScreenName,
@@ -114,7 +118,11 @@ namespace aLevel.Controllers
 				      CreatedAt = tweet.CreatedAt,
 				      IsVerified = tweet.IsVerified,
 				      RetweetCount = tweet.RetweetCount,
-                      SentimentText = new Sentence( tweet.Text ).Sentiment.ToString()
+                      SentimentText = new Sentence( tweet.Text ).Sentiment.ToString(),
+                      FavoriteCount = tweet.FavoriteCount,
+                      FollowerCount = tweet.FollowerCount,
+                      StatusesCount = tweet.StatusesCount,
+                      Lang = tweet.Lang
 				  } )
 				.ToList();
 

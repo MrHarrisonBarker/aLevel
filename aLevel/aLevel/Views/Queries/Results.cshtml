@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <canvas width="960" height="500"></canvas>
-<script src="//d3js.org/d3.v4.min.js"></script>
 <script>
 
     var data = [0,0,0,0,0];
@@ -100,6 +99,19 @@
         <th>
             @Html.DisplayNameFor(model => model.SentimentText)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FollowerCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusesCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FavoriteCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lang)
+        </th>
+
 
     </tr>
     </thead>
@@ -139,6 +151,22 @@
             <td>
                 @Html.DisplayFor( modelItem => item.SentimentText )
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FollowerCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusesCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FavoriteCount)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Lang)
+            </td>
+
         </tr>
     }
     </tbody>

@@ -31,6 +31,18 @@ namespace aLevel.Models
         [DisplayName("Tweet sentiment")]
         public string SentimentText { get; set; }
 
+        [DisplayName("Follower Count")]
+        public int FollowerCount { get; set; }
+
+        [DisplayName("StatusesCount")]
+        public int StatusesCount { get; set; }
+
+        [DisplayName("Lang")]
+        public string Lang { get; set; }
+
+        [DisplayName("FavoriteCount")]
+        public int? FavoriteCount { get; set; }
+
         internal object ToListAsync()
         {
             throw new NotImplementedException();

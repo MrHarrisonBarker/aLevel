@@ -16,7 +16,10 @@ namespace aLevel
 			bundles.Add( new ScriptBundle( "~/bundles/tablesorter" ).Include(
 			                                                                 "~/Scripts/tablesorter/jquery.tablesorter.combined.js" ) );
 
-			bundles.Add( new ScriptBundle( "~/bundles/jqueryval" ).Include(
+		    bundles.Add(new ScriptBundle("~/bundles/d3").Include(
+                                                                 "~/Scripts/d3/d3.min.js"));
+
+            bundles.Add( new ScriptBundle( "~/bundles/jqueryval" ).Include(
 			                                                               "~/Scripts/jquery.validate*" ) );
 
 			// Use the development version of Modernizr to develop with and learn from. Then, when you're
