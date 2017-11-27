@@ -2,23 +2,26 @@
 @model IEnumerable<aLevel.Models.SentimentViewModel>
 
 @functions {
+
     private String ChooseColor(String sentiment)
     {
-
-        if (sentiment == "Very Negitive")
+        if (sentiment == "VeryNegative")
         {
             return ("#E30202");
-        } else if (sentiment == "Negative")
+        }
+        else if (sentiment == "Negative")
         {
             return ("#FF3737");
-        } else if (sentiment == "Neutral")
+        }
+        else if (sentiment == "Neutral")
         {
             return ("#FCD72D");
-        }else if (sentiment == "Positive")
+        }
+        else if (sentiment == "Positive")
         {
             return ("#8EDC23");
         }
-        else if( sentiment == "Very Positvie" )
+        else if (sentiment == "VeryPositive")
         {
             return ("#2FCF0B");
         }
@@ -29,10 +32,9 @@
     }
 
 
-
-    private int isZero( int count )
+    private int isZero(int count)
     {
-        if( count == 0 )
+        if (count == 0)
         {
             return 1;
         }
@@ -41,6 +43,7 @@
             return count;
         }
     }
+
 }
 @{
     ViewBag.Title = "Search";
@@ -51,24 +54,27 @@
 <canvas width="500" height="500"></canvas>
 <script>
 
-    var data = [0,0,0,0,0];
+    var data = [0, 0, 0, 0, 0];
 
     @foreach (var item in Model)
     {
-        if (item.SentimentText == "Very Negitive")
+        if (item.SentimentText == "VeryNegative")
         {
             @:data[0]++;
-        } else if (item.SentimentText == "Negative")
+        }
+        else if (item.SentimentText == "Negative")
         {
             @:data[1]++;
-        } else if (item.SentimentText == "Neutral")
+        }
+        else if (item.SentimentText == "Neutral")
         {
             @:data[2]++;
-        }else if (item.SentimentText == "Positive")
+        }
+        else if (item.SentimentText == "Positive")
         {
             @:data[3]++;
         }
-        else if (item.SentimentText == "Very Positvie")
+        else if (item.SentimentText == "VeryPositive")
         {
             @:data[4]++;
         }
@@ -100,7 +106,7 @@
     context.translate(width / 2, height / 2);
 
     context.globalAlpha = 0.5;
-    arcs.forEach(function (d, i) {
+    arcs.forEach(function(d, i) {
         context.beginPath();
         arc(d);
         context.fillStyle = colors[i];
@@ -114,6 +120,37 @@
     context.stroke();
 
 </script>
+<style>
+    .node
+    {
+        cursor: pointer;
+    }
+
+    .node:hover
+    {
+        stroke: #000;
+        stroke-width: 1.5px;
+    }
+
+    .node--leaf
+    {
+        fill: white;
+    }
+
+    .label
+    {
+        font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-anchor: middle;
+        text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+    }
+
+    .label,
+    .node--root,
+    .node--leaf
+    {
+        pointer-events: none;
+    }
+</style>
 
 <svg width="500" height="500" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
 <script>
@@ -124,7 +161,7 @@
     {
         var retweet = item.RetweetCount;
         var sentiment = item.SentimentText;
-        WriteLiteral( "classes.push({ 'id': '" + retweet + "', 'value': " + isZero( retweet ) + ", 'color': '" + ChooseColor( sentiment ) + "'});\n" );
+        WriteLiteral("classes.push({ 'id': '" + retweet + "', 'value': " + isZero(retweet) + ", 'color': '" + ChooseColor(sentiment) + "'});\n");
     }
     //var i = 5;
     //classes.push({ "id": i.toString(), "value": 50, "color": '#42f445' });
@@ -140,15 +177,15 @@
     var pack = d3.pack().size([width, height]).padding(1.5);
 
     var root = d3.hierarchy({ children: classes })
-        .sum(function (d) { return d.value; }).each(function (d) {
-        if (id = d.data.id) {
-            var id,
-                i = id.lastIndexOf(".");
-            d.id = id;
-            d.package = id.slice(0, i);
-            d.class = id.slice(i + 1);
-        }
-    });
+        .sum(function(d) { return d.value; }).each(function(d) {
+            if (id = d.data.id) {
+                var id,
+                    i = id.lastIndexOf(".");
+                d.id = id;
+                d.package = id.slice(0, i);
+                d.class = id.slice(i + 1);
+            }
+        });
 
     var node = svg.selectAll(".node").data(pack(root).leaves()).enter().append("g").attr("class", "node")
         .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
@@ -176,16 +213,16 @@
             Index
         </th>
         <th>
-            @Html.DisplayNameFor( model => model.ImageUrl )
+            @Html.DisplayNameFor(model => model.ImageUrl)
         </th>
         <th>
-            @Html.DisplayNameFor( model => model.ScreenName )
+            @Html.DisplayNameFor(model => model.ScreenName)
         </th>
         <th>
-            @Html.DisplayNameFor( model => model.Text )
+            @Html.DisplayNameFor(model => model.Text)
         </th>
         <th>
-            @Html.DisplayNameFor( model => model.CreatedAt)
+            @Html.DisplayNameFor(model => model.CreatedAt)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IsVerified)
@@ -212,12 +249,12 @@
 
     </tr>
     </thead>
-    
+
     <tbody>
     @{
         var i = 0;
     }
-    @foreach( var item in Model )
+    @foreach (var item in Model)
     {
         <tr>
             <td>
@@ -227,10 +264,10 @@
                 <img src="@item.ImageUrl" alt="@item.ScreenName"/>
             </td>
             <td>
-                @Html.DisplayFor( modelItem => item.ScreenName )
+                @Html.DisplayFor(modelItem => item.ScreenName)
             </td>
             <td>
-                @Html.DisplayFor( modelItem => item.Text )
+                @Html.DisplayFor(modelItem => item.Text)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedAt)
@@ -239,14 +276,14 @@
                 <span style="display: none">@item.IsVerified</span>
                 @if (item.IsVerified == true)
                 {
-                    <img src="~/img/1307051244_737.png" alt="@item.IsVerified" />
+                    <img src="~/img/1307051244_737.png" alt="@item.IsVerified"/>
                 }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.RetweetCount)
             </td>
             <td>
-                @Html.DisplayFor( modelItem => item.SentimentText )
+                @Html.DisplayFor(modelItem => item.SentimentText)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FollowerCount)
@@ -259,7 +296,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.FavoriteCount)
             </td>
-            
+
             <td>
                 @Html.DisplayFor(modelItem => item.Lang)
             </td>
@@ -269,17 +306,12 @@
     </tbody>
 
 </table>
-    
-
-
-
 
 
 @section scripts {
     <script language="javascript">
-        $( function()
-        {
-            $( '#tweetTable' ).tablesorter([1,0]);
+        $(function() {
+            $('#tweetTable').tablesorter([1, 0]);
         })
     </script>
 }
