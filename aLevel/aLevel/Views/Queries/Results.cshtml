@@ -2,15 +2,43 @@
 @model IEnumerable<aLevel.Models.SentimentViewModel>
 
 @functions {
-    private String ChoseColor(String sentiment)
+    private String ChooseColor(String sentiment)
     {
-        if (sentiment == "Positive")
+
+        if (sentiment == "Very Negitive")
         {
-            return ("#42f445");
+            return ("#E30202");
+        } else if (sentiment == "Negative")
+        {
+            return ("#FF3737");
+        } else if (sentiment == "Neutral")
+        {
+            return ("#FCD72D");
+        }else if (sentiment == "Positive")
+        {
+            return ("#8EDC23");
+        }
+        else if( sentiment == "Very Positvie" )
+        {
+            return ("#2FCF0B");
         }
         else
         {
-            return ("#f44141");
+            return null;
+        }
+    }
+
+
+
+    private int isZero( int count )
+    {
+        if( count == 0 )
+        {
+            return 1;
+        }
+        else
+        {
+            return count;
         }
     }
 }
@@ -20,7 +48,7 @@
 
 <!DOCTYPE html>
 <meta charset="utf-8">
-<canvas width="960" height="500"></canvas>
+<canvas width="500" height="500"></canvas>
 <script>
 
     var data = [0,0,0,0,0];
@@ -87,7 +115,7 @@
 
 </script>
 
-<svg width="1860" height="1860" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
+<svg width="500" height="500" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
 <script>
 
     var classes = [];
@@ -96,7 +124,7 @@
     {
         var retweet = item.RetweetCount;
         var sentiment = item.SentimentText;
-        @:classes.push({ "id": retweet.toString(), "value": retweet, "color": ChoseColor(sentiment)});
+        WriteLiteral( "classes.push({ 'id': '" + retweet + "', 'value': " + isZero( retweet ) + ", 'color': '" + ChooseColor( sentiment ) + "'});\n" );
     }
     //var i = 5;
     //classes.push({ "id": i.toString(), "value": 50, "color": '#42f445' });
@@ -111,7 +139,8 @@
 
     var pack = d3.pack().size([width, height]).padding(1.5);
 
-    var root = d3.hierarchy({ children: classes }).sum(function(d) { return d.value; }).each(function(d) {
+    var root = d3.hierarchy({ children: classes })
+        .sum(function (d) { return d.value; }).each(function (d) {
         if (id = d.data.id) {
             var id,
                 i = id.lastIndexOf(".");
