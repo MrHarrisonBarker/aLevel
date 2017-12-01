@@ -22,7 +22,7 @@ namespace aLevel.Controllers
 
 	    public ActionResult Index()
 	    {
-	        bool currentlyTesting = true;
+	        bool currentlyTesting = false;
 
             if ( !credentialChecker.HasCredentials() && currentlyTesting == false)
 	        {

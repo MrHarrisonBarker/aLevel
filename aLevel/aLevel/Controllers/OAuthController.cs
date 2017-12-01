@@ -14,7 +14,7 @@ namespace aLevel.Controllers
         {
             return View("Index");
         }
-        
+        [HttpPost]
         public async Task<ActionResult> BeginAsync()
         {
             //var auth = new MvcSignInAuthorizer

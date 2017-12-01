@@ -8,24 +8,27 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/d3")
+
 </head>
 <body>
-    
-    <div class="container body-content">
-        
+
+    <div class="container body-content" style="min-height: 100%">
+
         @RenderBody()
         
-        <hr />
         
-        <footer>
-            <p>&copy; @DateTime.Now.Year - MoreTwitterknowledge</p>
-        
-        </footer>
-        
+        <a href="https://www.twitter.com"><img src="~/img/twitterlogo.png" class="img-responsive center-block" style="width: 3%; margin-bottom: 1%;margin-top: 1%" /></a>
+
+        <div class="footer navbar-fixed-bottom">
+            <hr />
+
+            <p style="color: grey; padding: 0 2%"; align="center">&copy; @DateTime.Now.Year - MoreTwitterknowledge</p>
+
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render( "~/bundles/tablesorter" )
+    @Scripts.Render("~/bundles/tablesorter")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
