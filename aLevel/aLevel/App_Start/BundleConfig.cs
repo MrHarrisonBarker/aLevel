@@ -34,7 +34,8 @@ namespace aLevel
 			bundles.Add( new StyleBundle( "~/Content/css" ).Include(
 			                                                        "~/Content/bootstrap.css",
 			                                                        "~/Content/site.css",
-																	"~/Content/tablesorter/theme.default.min.css") );
+																	"~/Content/tablesorter/theme.default.min.css",
+                                                                    "~/Content/StyleSheetMain.css") );
 
 		}
 	}

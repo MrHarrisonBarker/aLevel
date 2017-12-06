@@ -12,21 +12,25 @@
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
     </div>
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2"></div>
+        <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8">
             <form method="GET" action="DoSearch">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <!--<label for="count">Sample size: </label>-->
-                        <input id="count" type="number" name="count" min="1" max="450" value="200" class="form-control" />
+                        <div class="form-group">
+                            <!--<label for="count">Sample size: </label>-->
+                            <input id="count" type="number" name="count" min="1" max="450" value="200" class="form-control" />
+                        </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <!--<label for="type">Result type: </label>-->
-                        <select id="type" name="type" class="form-control">
-                            <option value="Mixed">Mixed</option>
-                            <option value="Popular">Popular</option>
-                            <option value="Recent">Recent</option>
-                        </select>
+                        <div class="input-group">
+                            <!--<label for="type">Result type: </label>-->
+                            <select id="type" name="type" class="form-control">
+                                <option value="Mixed">Mixed</option>
+                                <option value="Popular">Popular</option>
+                                <option value="Recent">Recent</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -39,7 +43,26 @@
                     <button type="submit" class="btn btn-primary center-block">Go!</button>
                 </div>
             </form>
+            
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input">
+                        Check me out
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2"></div>
     </div>
 </div>

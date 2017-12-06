@@ -2,34 +2,13 @@
     ViewBag.Title = "Authorizing Application";
 }
 
-<style>
-    .btn-blue {
-        background-color: #04AEEC;
-        color: white;
-        border-color: #04AEEC;
-    }
-    .btn-blue:focus {
-        background-color: #A3DFEF;
-        color: white;
-        border-color: #A3DFEF; 
-    }
-    .btn-blue:hover {
-        background-color: #1dcaff;
-        color: white;
-        border-color: #1dcaff; 
-    }
-</style>
-
 <div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-        <img src="~/img/Logo.png" class="img-responsive center-block">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <img src="~/img/Logo.png" class="img-res center-block">
 
-        <h2 class="text-center">Authorise with OAuth</h2>
+        <h2 class="text-center h2-res">Authorise with OAuth</h2>
         
     </div>
-   
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
 
 </div> 
 
@@ -38,7 +17,7 @@
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         @using (Html.BeginForm("Begin", "OAuth"))
         {
-            <button class="btn btn-blue btn-lg center-block" type="submit" style="width: 50%">Authorise</button>
+            <button class="btn btn-blue btn-lg center-block" type="submit" style="width: 50%">Begin</button>
         }
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>

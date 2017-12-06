@@ -1,0 +1,70 @@
+﻿.btn-blue {
+    background-color: #04AEEC;
+    color: white;
+    border-color: #04AEEC;
+}
+.btn-blue:focus {
+    background-color: #A3DFEF;
+    color: white;
+    border-color: #A3DFEF; 
+}
+.btn-blue:hover {
+    background-color: #1dcaff;
+    color: white;   
+    border-color: #1dcaff; 
+}
+
+@media(max-width: 2000px) {
+    .h2-res {
+        font-size: 60px;
+    }
+    .img-res {
+        width: 100%
+    }
+}
+
+@media(max-width: 1000px) {
+    .h2-res {
+        font-size: 60px;
+    }
+    .img-res {
+        width: 100%
+    }
+}
+
+@media(max-width: 800px) {
+    .h2-res {
+        font-size: 50px;
+    }
+    .img-res {
+        width: 80%
+    }
+}
+
+@media(max-width: 700px) {
+    .h2-res {
+        font-size: 40px;
+    }
+    .img-res {
+        width: 70%
+    }
+}
+
+@media(max-width: 500px) {
+    .h2-res {
+        font-size: 35px;
+    }
+    .img-res {
+        width: 60%
+    }
+}
+
+@media(max-width: 450px) {
+    .h2-res {
+        font-size: 30px;
+    }
+    .img-res {
+        width: 50%
+    }
+}
+
