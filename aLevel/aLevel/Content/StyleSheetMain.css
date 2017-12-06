@@ -2,6 +2,7 @@
     background-color: #04AEEC;
     color: white;
     border-color: #04AEEC;
+    width: 50%
 }
 .btn-blue:focus {
     background-color: #A3DFEF;
@@ -67,4 +68,3 @@
         width: 50%
     }
 }
-

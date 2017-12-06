@@ -7,6 +7,7 @@
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <img src="~/img/Logo.png" class="img-res center-block">
             <h2 style="text-align: center">Search Twitter</h2>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
@@ -14,53 +15,27 @@
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2"></div>
         <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8">
-            <form method="GET" action="DoSearch">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="form-group">
-                            <!--<label for="count">Sample size: </label>-->
-                            <input id="count" type="number" name="count" min="1" max="450" value="200" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="input-group">
-                            <!--<label for="type">Result type: </label>-->
-                            <select id="type" name="type" class="form-control">
-                                <option value="Mixed">Mixed</option>
-                                <option value="Popular">Popular</option>
-                                <option value="Recent">Recent</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 1%;padding-bottom: 1%">
-                        <!--<label for="query">Please enter a query: </label>-->
-                        <input id="query" type="text" name="query" class="form-control center-block" style="max-width: 100%" />
-                    </div>
-                </div>
-                <div class="row">
-                    <button type="submit" class="btn btn-primary center-block">Go!</button>
-                </div>
-            </form>
-            
-            <form>
+            <form method="GET" action="DoSearch" class="center-block">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <h4>Count</h4>
+                    <input id="count" type="number" name="count" min="1" max="450" value="200" class="form-control" style="max-width: 100%"/>
+                    <small class="form-text text-muted">*Help goes here*</small>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <h4>Result type</h4>
+                    <select id="type" name="type" class="form-control" style="max-width: 100%">
+                        <option value="Mixed">Mixed</option>
+                        <option value="Popular">Popular</option>
+                        <option value="Recent">Recent</option>
+                    </select>
+                    <small class="form-text text-muted">*Help goes here*</small>
                 </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input">
-                        Check me out
-                    </label>
+                <div class="form-group">
+                    <h4>Query</h4>
+                    <input id="query" type="text" name="query" class="form-control center-block" style="max-width: 100%" />
+                    <small class="form-text text-muted">*Help goes here*</small>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-blue btn-lg center-block">Go!</button>
             </form>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2"></div>
