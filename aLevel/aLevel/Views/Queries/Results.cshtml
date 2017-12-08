@@ -48,163 +48,170 @@
 @{
     ViewBag.Title = "Search";
 }
+<div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>
+    <div class="col-lg-4 col-md-4 col-sm-5 col-xs-5">
+        
+    
+        <canvas width="500" height="500"></canvas>
+        <script>
 
-<!DOCTYPE html>
-<meta charset="utf-8">
-<canvas width="500" height="500"></canvas>
-<script>
+            var data = [0, 0, 0, 0, 0];
 
-    var data = [0, 0, 0, 0, 0];
+            @foreach (var item in Model)
+            {
+                if (item.SentimentText == "VeryNegative")
+                {
+                    @:data[0]++;
+                }
+                else if (item.SentimentText == "Negative")
+                {
+                    @:data[1]++;
+                }
+                else if (item.SentimentText == "Neutral")
+                {
+                    @:data[2]++;
+                }
+                else if (item.SentimentText == "Positive")
+                {
+                    @:data[3]++;
+                }
+                else if (item.SentimentText == "VeryPositive")
+                {
+                    @:data[4]++;
+                }
+            }
 
-    @foreach (var item in Model)
-    {
-        if (item.SentimentText == "VeryNegative")
-        {
-            @:data[0]++;
-        }
-        else if (item.SentimentText == "Negative")
-        {
-            @:data[1]++;
-        }
-        else if (item.SentimentText == "Neutral")
-        {
-            @:data[2]++;
-        }
-        else if (item.SentimentText == "Positive")
-        {
-            @:data[3]++;
-        }
-        else if (item.SentimentText == "VeryPositive")
-        {
-            @:data[4]++;
-        }
-    }
+            alert(data);
 
-    alert(data);
+            var canvas = document.querySelector("canvas"),
+                context = canvas.getContext("2d");
 
-    var canvas = document.querySelector("canvas"),
-        context = canvas.getContext("2d");
+            var width = canvas.width,
+                height = canvas.height,
+                radius = Math.min(width, height) / 2;
 
-    var width = canvas.width,
-        height = canvas.height,
-        radius = Math.min(width, height) / 2;
+            var colors = [
+                "#E30202", "#FF3737", "#FCD72D", "#8EDC23", "#2FCF0B"
+            ];
 
-    var colors = [
-        "#E30202", "#FF3737", "#FCD72D", "#8EDC23", "#2FCF0B"
-    ];
+            var arc = d3.arc()
+                .outerRadius(radius - 10)
+                .innerRadius(radius - 70)
+                .padAngle(0.03)
+                .context(context);
 
-    var arc = d3.arc()
-        .outerRadius(radius - 10)
-        .innerRadius(radius - 70)
-        .padAngle(0.03)
-        .context(context);
+            var pie = d3.pie();
 
-    var pie = d3.pie();
+            var arcs = pie(data);
 
-    var arcs = pie(data);
+            context.translate(width / 2, height / 2);
 
-    context.translate(width / 2, height / 2);
+            context.globalAlpha = 0.5;
+            arcs.forEach(function(d, i) {
+                context.beginPath();
+                arc(d);
+                context.fillStyle = colors[i];
+                context.fill();
+            });
 
-    context.globalAlpha = 0.5;
-    arcs.forEach(function(d, i) {
-        context.beginPath();
-        arc(d);
-        context.fillStyle = colors[i];
-        context.fill();
-    });
+            context.globalAlpha = 1;
+            context.beginPath();
+            arcs.forEach(arc);
+            context.lineWidth = 1.5;
+            context.stroke();
 
-    context.globalAlpha = 1;
-    context.beginPath();
-    arcs.forEach(arc);
-    context.lineWidth = 1.5;
-    context.stroke();
+        </script>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-5 col-xs-5">
+        <style>
+            .node {
+                cursor: pointer;
+            }
 
-</script>
-<style>
-    .node
-    {
-        cursor: pointer;
-    }
+                .node:hover {
+                    stroke: #000;
+                    stroke-width: 1.5px;
+                }
 
-    .node:hover
-    {
-        stroke: #000;
-        stroke-width: 1.5px;
-    }
+            .node--leaf {
+                fill: white;
+            }
 
-    .node--leaf
-    {
-        fill: white;
-    }
+            .label {
+                font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+                text-anchor: middle;
+                text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+            }
 
-    .label
-    {
-        font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
-        text-anchor: middle;
-        text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
-    }
+            .label,
+            .node--root,
+            .node--leaf {
+                pointer-events: none;
+            }
+        </style>
+        <div>
+            <svg width="500" height="500" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
+        </div>
+            <script>
 
-    .label,
-    .node--root,
-    .node--leaf
-    {
-        pointer-events: none;
-    }
-</style>
+            var classes = [];
 
-<svg width="500" height="500" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
-<script>
-
-    var classes = [];
-
-    @foreach (var item in Model)
+            @foreach (var item in Model)
     {
         var retweet = item.RetweetCount;
         var sentiment = item.SentimentText;
         WriteLiteral("classes.push({ 'id': '" + retweet + "', 'value': " + isZero(retweet) + ", 'color': '" + ChooseColor(sentiment) + "'});\n");
     }
-    //var i = 5;
-    //classes.push({ "id": i.toString(), "value": 50, "color": '#42f445' });
+            //var i = 5;
+            //classes.push({ "id": i.toString(), "value": 50, "color": '#42f445' });
 
-    alert(classes);
+            alert(classes);
 
-    var svg = d3.select("svg"),
-        width = +svg.attr("width"),
-        height = +svg.attr("height");
+            var svg = d3.select("svg"),
+                width = +svg.attr("width"),
+                height = +svg.attr("height");
 
-    var format = d3.format(",d");
+            var format = d3.format(",d");
 
-    var pack = d3.pack().size([width, height]).padding(1.5);
+            var pack = d3.pack().size([width, height]).padding(1.5);
 
-    var root = d3.hierarchy({ children: classes })
-        .sum(function(d) { return d.value; }).each(function(d) {
-            if (id = d.data.id) {
-                var id,
-                    i = id.lastIndexOf(".");
-                d.id = id;
-                d.package = id.slice(0, i);
-                d.class = id.slice(i + 1);
-            }
-        });
+            var root = d3.hierarchy({ children: classes })
+                .sum(function (d) { return d.value; }).each(function (d) {
+                    if (id = d.data.id) {
+                        var id,
+                            i = id.lastIndexOf(".");
+                        d.id = id;
+                        d.package = id.slice(0, i);
+                        d.class = id.slice(i + 1);
+                    }
+                });
 
-    var node = svg.selectAll(".node").data(pack(root).leaves()).enter().append("g").attr("class", "node")
-        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+            var node = svg.selectAll(".node").data(pack(root).leaves()).enter().append("g").attr("class", "node")
+                .attr("transform", function (d) { return "translate(" + d.x + "," + d.y + ")"; });
 
-    node.append("circle").attr("id", function(d) { return d.id; }).attr("r", function(d) { return d.r; })
-        .style("fill", function(d) { return d.data.color });
+            node.append("circle").attr("id", function (d) { return d.id; }).attr("r", function (d) { return d.r; })
+                .style("fill", function (d) { return d.data.color });
 
-    node.append("clipPath").attr("id", function(d) { return "clip-" + d.id; }).append("use")
-        .attr("xlink:href", function(d) { return "#" + d.id; });
+            node.append("clipPath").attr("id", function (d) { return "clip-" + d.id; }).append("use")
+                .attr("xlink:href", function (d) { return "#" + d.id; });
 
-    node.append("text").attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; }).selectAll("tspan")
-        .data(function(d) { return d.class.split(/(?=[A-Z][^A-Z])/g); }).enter().append("tspan").attr("x", 0)
-        .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
-        .text(function(d) { return d; });
+            node.append("text").attr("clip-path", function (d) { return "url(#clip-" + d.id + ")"; }).selectAll("tspan")
+                .data(function (d) { return d.class.split(/(?=[A-Z][^A-Z])/g); }).enter().append("tspan").attr("x", 0)
+                .attr("y", function (d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
+                .text(function (d) { return d; });
 
-    node.append("title").text(function(d) { return d.id + "\n" + format(d.value); });
+            node.append("title").text(function (d) { return d.id + "\n" + format(d.value); });
 
 
-</script>
+        </script>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>
+    </div>
+
+<div class="row">
+<div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>
+<div class="col-lg-8 col-md-8 col-sm-10 col-xs-10">
 
 <table class="tablesorter" id="tweetTable">
     <thead>
@@ -306,7 +313,9 @@
     </tbody>
 
 </table>
-
+</div>
+<div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>
+</div>
 
 @section scripts {
     <script language="javascript">
