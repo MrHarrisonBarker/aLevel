@@ -1,6 +1,10 @@
 ﻿@using ikvm.extensions
 @model IEnumerable<aLevel.Models.SentimentViewModel>
 
+@{
+    ViewBag.Title = "Search";
+}
+
 @functions {
 
     private String ChooseColor(String sentiment)
@@ -31,7 +35,6 @@
         }
     }
 
-
     private int isZero(int count)
     {
         if (count == 0)
@@ -45,14 +48,9 @@
     }
 
 }
-@{
-    ViewBag.Title = "Search";
-}
+
+
 <div class="row">
-    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>
-    <div class="col-lg-4 col-md-4 col-sm-5 col-xs-5">
-        
-    
         <canvas width="500" height="500"></canvas>
         <script>
 
@@ -122,36 +120,8 @@
             context.stroke();
 
         </script>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-5 col-xs-5">
-        <style>
-            .node {
-                cursor: pointer;
-            }
-
-                .node:hover {
-                    stroke: #000;
-                    stroke-width: 1.5px;
-                }
-
-            .node--leaf {
-                fill: white;
-            }
-
-            .label {
-                font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
-                text-anchor: middle;
-                text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
-            }
-
-            .label,
-            .node--root,
-            .node--leaf {
-                pointer-events: none;
-            }
-        </style>
-        <div>
-            <svg width="500" height="500" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
+        <div id="container" class="svg-container">
+            @*<svg width="500" height="500"></svg>*@
         </div>
             <script>
 
@@ -168,7 +138,11 @@
 
             alert(classes);
 
-            var svg = d3.select("svg"),
+            var svg = d3.select("div#container")
+                .append("svg")
+                .attr("preserveAspectRatio", "xMinYMin meet")
+                .attr("viewBox", "0 0 300 300")
+                .classed("svg-content", true);
                 width = +svg.attr("width"),
                 height = +svg.attr("height");
 
@@ -206,12 +180,8 @@
 
         </script>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>
-    </div>
 
 <div class="row">
-<div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>
-<div class="col-lg-8 col-md-8 col-sm-10 col-xs-10">
 
 <table class="tablesorter" id="tweetTable">
     <thead>
@@ -313,8 +283,6 @@
     </tbody>
 
 </table>
-</div>
-<div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>
 </div>
 
 @section scripts {

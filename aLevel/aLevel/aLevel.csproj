@@ -191,6 +191,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\StyleSheetMain.css" />
+    <Content Include="Content\StyleSheetResults.css" />
     <Content Include="Content\tablesorter\theme.default.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -299,7 +300,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\OAuth\Index.cshtml" />
-    <Content Include="Views\Queries\DoSearch.cshtml" />
     <Content Include="Views\Queries\Search.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />

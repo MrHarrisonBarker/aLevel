@@ -17,17 +17,38 @@ namespace aLevel.Controllers
 {
 	public class QueriesController : Controller
 	{
+        private readonly ICredentialChecker credentialChecker;
 
-        //		[HttpGet]
+	    public QueriesController() : this( null )
+	    {
+
+	    }
+
+        public QueriesController(ICredentialChecker credentialChecker)
+	    {
+	        this.credentialChecker = credentialChecker ?? new SessionStateCredentialChecker();
+	    }
+
+	    //		[HttpGet]
         public ActionResult Search()    
         {
+            if (!credentialChecker.HasCredentials())
+            {
+                return RedirectToAction("Index", "OAuth");
+            }
+
             return View( "Search" );
         }
 
         //		[HttpPost]
         public async Task<ActionResult> DoSearch( string query, int count, ResultType type )
 		{
-			var tweets =
+		    if (!credentialChecker.HasCredentials())
+		    {
+		        return RedirectToAction("Index", "OAuth");
+		    }
+
+            var tweets =
 				await
 					GetTweets( query, count, type );
 

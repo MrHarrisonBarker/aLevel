@@ -35,7 +35,8 @@ namespace aLevel
 			                                                        "~/Content/bootstrap.css",
 			                                                        "~/Content/site.css",
 																	"~/Content/tablesorter/theme.default.min.css",
-                                                                    "~/Content/StyleSheetMain.css") );
+                                                                    "~/Content/StyleSheetMain.css",
+			                                                        "~/Content/StyleSheetResults.css") );
 
 		}
 	}
