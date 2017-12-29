@@ -4,15 +4,6 @@
 
 [![Build Status](https://travis-ci.org/MrHarrisonBarker/aLevel.svg?branch=master)](https://travis-ci.org/MrHarrisonBarker/aLevel)
 
-## Features to impliment
-
-- [x] Basic Twitter querying.
-- [x] User input for Twitter queries.
-- [ ] Sentiment analysis of mass tweets.
-- [ ] Data visualisation of analysed tweets.
-- [ ] Stored credentials in db.
-- [ ] Refine desgin.
-
 ## Some code
 
 ### Basic search function
